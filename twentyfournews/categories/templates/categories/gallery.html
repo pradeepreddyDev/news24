@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}24news | Gallery {% endblock title %}
+{% block content %}
+
+  <section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="single_page">
+            <ol class="breadcrumb">
+              <li><a href="/">Home</a></li>
+
+              <li class="active">Gallery</li>
+            </ol>
+            <h1>Gallery</h1>
+
+            <div class="single_page_content">
+                <div id="wrapper">
+    <ul id="portfolio1" class="clearfix portfolio">
+
+      {% for post in post %}
+      <li><a href="../media/{{ post.image }}"><img src="../media/{{ post.image }}"></a>
+      <h4>{{ post.title }}</h4>
+      </li>
+      {% endfor %}
+
+    </ul>
+  </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+    {% include "categories/common.html" %}
+    </div>
+  </section>
+
+  {% endblock content %}

@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}Welcome to 24use{% endblock title %}</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/font.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/li-scroller.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/slick.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/jquery.fancybox.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/theme.css' %}">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.slick/1.5.9/slick-theme.css">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/custom.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Coiny&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,600i,700,700i,800&display=swap" rel="stylesheet">
+<!--[if lt IE 9]>
+<script src="{% static 'assets/js/html5shiv.min.js' %}"></script>
+<script src="{% static 'assets/js/respond.min.js' %}"></script>
+<![endif]-->
+</head>
+<body>
+<div id="preloader">
+  <div id="status">&nbsp;</div>
+</div>
+<a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+<div class="container">
+  <header id="header">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="header_top">
+          <div class="header_top_left">
+              <div class="social_area">
+            <ul class="social_nav">
+              <li class="facebook"><a href="#"></a></li>
+              <li class="twitter"><a href="#"></a></li>
+              <li class="flickr"><a href="#"></a></li>
+              <li class="pinterest"><a href="#"></a></li>
+              <li class="googleplus"><a href="#"></a></li>
+              <li class="vimeo"><a href="#"></a></li>
+              <li class="youtube"><a href="#"></a></li>
+              <li class="mail"><a href="#"></a></li>
+            </ul>
+          </div>
+          </div>
+          <div class="header_top_middle">
+            <ul class="top_nav">
+              <li><a href="/te">తెలుగు</a></li>
+              <li><a href="/">English</a></li>
+
+            </ul>
+          </div>
+          <div class="header_top_right">
+            <p>{% now "jS F Y" %}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="header_bottom">
+          <div class="logo_area"><a href="/" class="logo"><!--<img src="images/logo.jpg" alt="">--><h1>24<span>use</span></h1></a></div>
+          <div class="add_banner"  id="navArea"> <nav class="navbar navbar-inverse" role="navigation">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav main_nav">
+          <li class="active"><a href="/"><span class="fa fa-home desktop-home"></span><span class="mobile-show">Home</span></a></li>
+          {% for header in header %}
+          <li><a href="/category/{{ header.id }}">{{ header.category }}</a></li>
+          {% endfor %}
+          <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/videos">Videos</a></li>
+          <li><a href="/reviews">Reviews</a></li>
+        </ul>
+      </div>
+    </nav></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+    {% block content %}
+    {% endblock content %}
+
+  <footer id="footer">
+    <div class="footer_top">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <div class="footer_widget wow fadeInLeftBig">
+            <h2>LATEST NEWS</h2>
+             <ul class="tag_nav">
+               {% for latest in latest %}
+              <li><a href="/detail/{{ latest.slug }}">{{ latest.title|slice:"0:50"|striptags }}...</a></li>
+               {% endfor %}
+
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <div class="footer_widget wow fadeInDown">
+            <h2>Tag</h2>
+            <ul class="tag_nav col-2">
+              {% for header in header %}
+              <li><a href="/category/{{ header.id }}">{{ header.category }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <div class="footer_widget wow fadeInRightBig">
+            <h2>{{ contact.title }}</h2>
+            <p>{{ contact.description|striptags }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer_bottom">
+        <div class="row">
+            <div class="col-md-5">
+      <p class="copyright">Copyright &copy; 2019 <a href="/">24use</a></p>
+      </div>
+      <div class="col-md-7">
+          <div class="terms-policy">
+              <a href="/contactus">Contact Us</a>
+             <a href="/cms/2">Terms & Conditions</a>
+              <a href="/cms/3">Cookie Policy</a>
+          </div>
+      </div>
+      </div>
+    </div>
+  </footer>
+</div>
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/wow.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/slick.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.li-scroller.1.0.js' %}"></script>
+<script src="{% static 'assets/js/jquery.newsTicker.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.fancybox.pack.js' %}"></script>
+<script src="{% static 'assets/js/custom.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% extends 'telugu-base.html' %}
+{% load static %}
+{% block title %}24news | Reviews {% endblock title %}
+{% block content %}
+  <section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="single_page">
+            <ol class="breadcrumb">
+              <li><a href="/te">హోమ్</a></li>
+
+              <li class="active">సమీక్షలు</li>
+            </ol>
+            <h1>సమీక్షలు</h1>
+
+            <div class="single_page_content">
+
+
+<div class="whitepage">
+
+  <div class="review">
+      {% for post in post %}
+      <div class="review_list">
+        <div class="reviewpanel">
+        <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="vtab1">
+                   <div class="myrate"><h3>{{ post.name }}</h3></div>
+
+                  <p>{{ post.description|striptags }}</p>
+                    </div>
+               <div class="rate">
+
+        <fieldset class="rating">
+            <label class = "full" for="star1" >{{ post.rating }}</label>
+          </fieldset>
+            </div>
+
+          </div>
+      </div>
+      </div>
+      {% endfor %}
+    </div>
+
+
+    </div>
+  </div>
+
+          </div>
+        </div>
+      </div>
+
+ {% include "categories_telugu/common.html" %}
+    </div>
+  </section>
+   {% endblock content %}

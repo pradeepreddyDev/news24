@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <section id="sliderSection">
+    <div class="row single_post_content">
+        <h2><span class="ml-23">Popular NEWS</span></h2>
+      <div class="">
+        <div class="container slick_slider-main">
+          {% for banners in banners %}
+          <div class="single_iteam"> <a href="/detail/{{ banners.slug }}"> <img src="media/{{ banners.image }}" alt=""></a>
+            <div class="slider_article">
+              <h2><a class="slider_tittle" href="/detail/{{ banners.slug }}">{{ banners.title }}</a></h2>
+              <p>{{ banners.description|slice:"0:150"|striptags }}...</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="single_post_content">
+            <h2><span>{{ news1_title.category }}</span></h2>
+            <div class="single_post_content_left">
+              <ul class="business_catgnav  wow fadeInDown">
+                {% for news1 in news1|slice:":1"%}
+                <li>
+                  <figure class="bsbig_fig"> <a href="/detail/{{ news1.slug }}" class="featured_img"> <img alt="" src="media/{{ news1.image }}"> <span class="overlay"></span> </a>
+                    <figcaption> <a href="/detail/{{ news1.slug }}">{{ news1.title|slice:"0:100" }}</a> </figcaption>
+                    <p>{{ news1.description|slice:"0:150"|striptags }}...</p>
+                  </figure>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="single_post_content_right">
+              <ul class="spost_nav">
+                {% for news1 in news1|slice:"1:"%}
+                <li>
+                  <div class="media wow fadeInDown"> <a href="/detail/{{ news1.slug }}" class="media-left"> <img alt="" src="media/{{ news1.image }}"> </a>
+                    <div class="media-body"> <a href="/detail/{{ news1.slug }}" class="catg_title">{{ news1.title|slice:"0:100"|striptags }}...</a> </div>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          <div class="fashion_technology_area">
+            <div class="fashion">
+              <div class="single_post_content">
+                <h2><span>{{ news2_title.category }}</span></h2>
+                <ul class="business_catgnav wow fadeInDown">
+                  {% for news2 in news2|slice:":1"%}
+                  <li>
+                    <figure class="bsbig_fig"> <a href="/detail/{{ news2.slug }}" class="featured_img"> <img alt="" src="media/{{ news2.image }}"> <span class="overlay"></span> </a>
+                      <figcaption> <a href="/detail/{{ news2.slug }}">{{ news2.title|slice:"0:100" }}...</a> </figcaption>
+                      <p>{{ news2.description|slice:"0:150"|striptags }}...</p>
+                    </figure>
+                  </li>
+                  {% endfor %}
+                </ul>
+                <ul class="spost_nav">
+
+                {% for news2 in news2|slice:"1:"%}
+                <li>
+                  <div class="media wow fadeInDown"> <a href="/detail/{{ news2.slug }}" class="media-left"> <img alt="" src="media/{{ news2.image }}"> </a>
+                    <div class="media-body"> <a href="/detail/{{ news2.slug }}" class="catg_title">{{ news2.title|slice:"0:100"|striptags }}...</a> </div>
+                  </div>
+                </li>
+                {% endfor %}
+
+                </ul>
+              </div>
+            </div>
+            <div class="technology">
+              <div class="single_post_content">
+                <h2><span>{{ news3_title.category }}</span></h2>
+                <ul class="business_catgnav">
+                  {% for news3 in news3|slice:":1"%}
+                  <li>
+                    <figure class="bsbig_fig"> <a href="/detail/{{ news3.slug }}" class="featured_img"> <img alt="" src="media/{{ news3.image }}"> <span class="overlay"></span> </a>
+                      <figcaption> <a href="/detail/{{ news3.slug }}l">{{ news3.title }}</a> </figcaption>
+                      <p>{{ news3.description|slice:"0:150"|striptags }}...</p>
+                    </figure>
+                  </li>
+                  {% endfor %}
+                </ul>
+                <ul class="spost_nav">
+                {% for news3 in news3|slice:"1:"%}
+                <li>
+                  <div class="media wow fadeInDown"> <a href="/detail/{{ news3.slug }}" class="media-left"> <img alt="" src="media/{{ news3.image }}"> </a>
+                    <div class="media-body"> <a href="/detail/{{ news3.slug }}" class="catg_title">{{ news3.title|slice:"0:100"|striptags }}...</a> </div>
+                  </div>
+                </li>
+                {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <section id="short-news">
+
+      <div class="row single_post_content">
+         <h2><span>{{ news4_title.category }}</span></h2>
+    <div class="slider gallery gallery-responsive portfolio_slider">
+      {% for news4 in news4 %}
+        <div class="inner">
+          <figure class="bsbig_fig"> <a href="/detail/{{ news4.slug }}" class="featured_img"> <img alt="" src="media/{{ news4.image }}"> <span class="overlay"></span> </a>
+                        <figcaption> <a href="/detail/{{ news4.slug }}">{{ news4.title|slice:"0:100"|striptags }}</a> </figcaption>
+                        <p>{{ news4.description|slice:"0:150"|striptags }}...</p>
+          </figure>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+  </section>
+          <div class="single_post_content">
+            <h2><span>{{ news5_title.category }}</span></h2>
+            <div class="single_post_content_left">
+              <ul class="business_catgnav">
+                 {% for news5 in news5|slice:":1" %}
+                <li>
+                  <figure class="bsbig_fig  wow fadeInDown"> <a class="featured_img" href="/detail/{{ news5.slug }}"> <img src="media/{{ news5.image }}" alt=""> <span class="overlay"></span> </a>
+                    <figcaption> <a href="/detail/{{ news5.slug }}">{{ news5.title|slice:"0:100"|striptags }}...</a> </figcaption>
+                    <p>{{ news5.description|slice:"0:100"|striptags }}...</p>
+                  </figure>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="single_post_content_right">
+              <ul class="spost_nav">
+                {% for news5 in news5|slice:"1:" %}
+                <li>
+                  <div class="media wow fadeInDown"> <a href="/detail/{{ news5.slug }}" class="media-left"> <img alt="" src="media/{{ news5.image }}"> </a>
+                    <div class="media-body"> <a href="/detail/{{ news5.slug }}" class="catg_title">{{ news5.title|slice:"0:100"|striptags }}...</a> </div>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% include "categories/common.html" %}
+    </div>
+  </section>
+{% endblock content %}

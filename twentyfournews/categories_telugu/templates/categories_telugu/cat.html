@@ -1,0 +1,41 @@
+{% extends 'telugu-base.html' %}
+{% load static %}
+{% block title %}24news | {{ cat.category }}{% endblock title %}
+{% block content %}
+<section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="single_page">
+            <ol class="breadcrumb">
+              <li><a href="/te">హోమ్</a></li>
+              
+              <li class="active">{{ cat.category }}</li>
+            </ol>
+            <h1>{{ cat.category }} వార్తలు</h1>
+           
+            <div class="single_post_content">
+                {% for post in post %}
+                <div class="row">
+                   <div class="col-md-4 news-post">
+                       <a href="/telugudetail/{{ post.slug }}"> <img alt="" src="../media/{{ post.image }}">
+                       </a>
+                   </div>
+
+                    <div class="col-md-8">
+                      <div class="news-post"> <a href="/telugudetail/{{ post.slug }}" class="catg_title"><h4>{{ post.telugu_title|slice:"0:100" }}</h4></a>
+                      <p>{{ post.description|slice:"0:200"|striptags }}...</p>
+
+                      </div>
+                    </div>
+                 </div>
+                {% endfor %}
+          </div>
+
+          </div>
+        </div>
+      </div>
+        {% include "categories_telugu/common.html" %}
+    </div>
+  </section>
+  {% endblock content %}

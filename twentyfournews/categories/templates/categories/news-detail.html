@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ post.title }}{% endblock title %}
+{% block content %}
+  <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5d94c5bf171ad100126e297c&product=inline-share-buttons" async="async"></script>
+  <section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="single_page">
+            <ol class="breadcrumb">
+              <li><a href="/">Home</a></li>
+              <li class="active">{{ cat.category }}</li>
+            </ol>
+            <h1>{{ post.title }}</h1>
+            <div class="post_commentbox"> 
+              <div class="sharethis-inline-share-buttons"></div>
+            </div>
+            <div class="single_page_content"> <img class="img-center" src="../media/{{ post.image }}" alt="" width="100%">
+              {% autoescape off %}
+              <p>{{ post.description }}</p>
+              {% endautoescape %}
+             <h2>Related Video</h2>
+             <iframe width="100%" height="300" src="https://www.youtube.com/embed/{{ post.video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+           
+            <div class="related_post">
+              <h2>Related Post <i class="fa fa-thumbs-o-up"></i></h2>
+              <ul class="spost_nav wow fadeInDown animated" style="visibility: hidden; animation-name: none;">
+                {% for related in related %}
+                <li>
+                  <div class="media"> <a class="media-left" href="/detail/{{ related.slug }}"> <img src="../media/{{ related.image }}" alt=""> </a>
+                    <div class="media-body"> <a class="catg_title" href="/detail/{{ related.slug }}">{{ related.title|slice:"0:100" }}...</a> </div>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+     {% include "categories/common.html" %}
+    </div>
+  </section>
+  {% endblock content %}
